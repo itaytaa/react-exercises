@@ -14,6 +14,11 @@ class Remover extends Component {
 			]
 		};
 	}
+	onRemove(idx) {
+		this.setState({
+			students: this.state.students.filter((student, index) => index !== idx)
+		})
+	}
 
 	render() {
 		return (
@@ -22,7 +27,7 @@ class Remover extends Component {
 				<p>Add a delete button for each student to remove it from the list.</p>
 				<ul className="Remover__list">
 					{this.state.students.map((student, index) => {
-						return <li key={index}>{student}</li>;
+						return <li key={index}>{student} <button onClick={this.onRemove.bind(this, index)}>Remove</button></li>;
 					})}
 				</ul>
 			</div>

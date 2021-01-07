@@ -22,8 +22,13 @@ class President extends Component {
 					lastName: 'Obama',
 					image: 'barack.jpeg'
 				}
-			]
+			],
+			selected:''
 		};
+	}
+
+	handleClick(idx) {
+		this.setState({ selected: this.state.presidents[idx].firstName + ' ' + this.state.presidents[idx].lastName })
 	}
 
 	render() {
@@ -32,11 +37,11 @@ class President extends Component {
 				<p>When clicking on a president, display his <strong>full</strong> name below.</p>
 				<div className="president-list">
 					{this.state.presidents.map((president, index) => {
-						return <img key={index} src={require('./images/' + president.image)} alt="" />
+						return <img key={index} src={require('./images/' + president.image)} alt="" onClick={this.handleClick.bind(this, index)} />
 					})}
 				</div>
 				<div>
-					<strong>You selected: </strong> Full name here
+					<strong>You selected: </strong>  {this.state.selected || <span>Full name here</span>}
 				</div>
 			</div>
 		)
