@@ -23,7 +23,7 @@ class President extends Component {
 					image: 'barack.jpeg'
 				}
 			],
-			selected:''
+			selected:null
 		};
 	}
 
